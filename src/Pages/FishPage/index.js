@@ -15,7 +15,7 @@ class Fish extends Component {
       fishData:[]
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     let fishData=[];
     fetch(window.API_CONFIG.API_PATH+'/fishdatas', {
         method: 'GET'
@@ -30,7 +30,7 @@ class Fish extends Component {
             }
           })[0];
           const item1=result.filter((e)=>{
-            if(e.date===new Date(new Date().getTime()-14*60*60*1000).toLocaleDateString().replace(/\//g,'-'))
+            if(e.date===new Date(new Date().getTime()-24*60*60*1000).toLocaleDateString().replace(/\//g,'-'))
             {
               return e;
             }
@@ -84,8 +84,9 @@ class Fish extends Component {
                 <img
                 src={val.src}
                 alt=""
-                style={{ width: '100%', verticalAlign: 'top' }}
+                style={{ width: '100%', minHeight:512, verticalAlign: 'top' }}
                 onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
                 }}
               />
               :
@@ -96,8 +97,9 @@ class Fish extends Component {
                 playsinline="true" 
                 //poster="" 
                 src={val.src}
-                style={{ width: '100%', height: imgHeight, verticalAlign: 'top' }}
+                style={{ width: '100%', height: imgHeight, verticalAlign: 'top', minHeight: 512 }}
                 onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
                 }}
                 >
                   您的浏览器不支持该视频播放
