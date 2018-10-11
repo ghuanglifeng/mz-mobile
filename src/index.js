@@ -8,6 +8,7 @@ import Home from './Pages/HomePage/index';
 import HappyToolPage from './Pages/HappyToolPage/index';
 import SouvenirPage from './Pages/SouvenirPage/index';
 import FishPage from './Pages/FishPage/index';
+import "./config.js";
 
 const loginCheck = ()=> {
     if(!sessionStorage.getItem('username')){
