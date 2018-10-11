@@ -27,6 +27,8 @@ const fishData=[
     noticeContent: '一只一斤多️斤左右，一斤30元，渔民避台风便宜出手了，冬天补气最佳食疗，恐怕非鳗鱼莫属了！我家杀鱼小哥会把这个鳗鱼杀的没有骨头感哦！鳗鱼一斤30元，30元一斤！', 
   }
 ];
+let pageData;
+
 class Fish extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ class Fish extends Component {
       isLoading: true,
       segIndex: 0,
       pageData: fishData[0],
-      imgHeight: 176,
+      imgHeight: window.innerHeight*0.8
     };
   }
   componentDidMount() {
@@ -43,28 +45,17 @@ class Fish extends Component {
   onSegChange = (e) => {
     console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
     const segIndex = e.nativeEvent.selectedSegmentIndex; 
-    let pageData;
-    switch(segIndex)
-    {
-      case 0://今日
-        pageData = fishData[0];
-        break;
-      case 1: //昨日
-        pageData = fishData[1];
-        break;
-      default: 
-        break;
-    }
-    this.setState({pageData})
+    this.setState({segIndex})
   }
   render() {
-    const { pageData }  = this.state; 
+    const {segIndex, imgHeight} = this.state;
+    pageData = segIndex===0?fishData[0]:fishData[1];
     return (
       <WingBlank size="lg" className="container">
         <SegmentedControl values={['今日','昨日']} onChange={this.onSegChange}/>
         <WhiteSpace size="lg" />
         <NoticeBar marqueeProps={{loop: true, style: {padding: '0 7.5px'}}}>
-          {pageData.noticeContent}
+            {pageData.noticeContent}
         </NoticeBar>
         <WhiteSpace size="lg" />
         <Carousel
@@ -77,7 +68,7 @@ class Fish extends Component {
             <a
               key={val}
               //href=""
-              style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
+              style={{ display: 'inline-block', width: '100%', height: imgHeight }}
             >
               {
                 val.type==='img' ?
@@ -86,9 +77,6 @@ class Fish extends Component {
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({ imgHeight: 'auto' });
                 }}
               />
               :
@@ -99,11 +87,8 @@ class Fish extends Component {
                 playsinline="true" 
                 //poster="" 
                 src={val.src}
-                style={{ width: '100%', verticalAlign: 'top' }}
+                style={{ width: '100%', height: imgHeight, verticalAlign: 'top' }}
                 onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({ imgHeight: 'auto' });
                 }}
                 >
                   您的浏览器不支持该视频播放

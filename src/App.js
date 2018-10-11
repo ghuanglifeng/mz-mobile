@@ -91,10 +91,15 @@ class App extends Component {
       null,
       (login, password) => {
         console.log(`login: ${login}, password: ${password}`);
-        sessionStorage.setItem('username',login);
-        this.setState({
-          LoginStatus: '1'
-        })
+        if(login==='admin'&&password==='admin')
+        {
+          sessionStorage.setItem('username',login);
+          this.setState({
+            LoginStatus: '1'
+          })
+        }else{
+          Toast.info('用户名或密码有误！')
+        }
       },
       'login-password',
       null,
@@ -115,8 +120,8 @@ class App extends Component {
           <p className="LoginArea">
             <span style={{display: this.state.LoginStatus==='1'?'none':'block'}}>
                 <a href="javascript:void(0);" onClick={()=>this.loginClick()}>登录</a>
-                &nbsp;<span style={{ color: '#000' }}>|</span> &nbsp;
-                <a href="javascript:void(0);" onClick={this.showModal('regModal')}>注册</a>
+                {/* &nbsp;<span style={{ color: '#000' }}>|</span> &nbsp;
+                <a href="javascript:void(0);" onClick={this.showModal('regModal')}>注册</a> */}
             </span>
             <span style={{display: this.state.LoginStatus==='0'?'none':'block'}}>
               hi,{sessionStorage.getItem('username')}
