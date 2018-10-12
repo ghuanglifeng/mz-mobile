@@ -28,14 +28,53 @@ const srcData=[{
   icon: 'image/games.jpg',
   text: '工具娱乐'
 }];
-
+let todayNews=[];
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       regModal: false,
       LoginStatus: !sessionStorage.getItem('username')?'0':'1',
+      todayNews: []
     };
+  }
+  componentWillMount(){
+    fetch(window.API_CONFIG.NEWS_API, {
+      method: 'GET'
+    }).then(res=>res.json()).then(
+      (result)=>{
+        if(result&&result.data)
+        {
+          if(result.data.tech&&result.data.tech.length>0)
+          {
+            todayNews.push(result.data.tech[0]);
+          }
+          if(result.data.dy&&result.data.dy.length>0)
+          {
+            todayNews.push(result.data.dy[0]);
+          }
+          if(result.data.money&&result.data.money.length>0)
+          {
+            todayNews.push(result.data.money[0]);
+          }
+          if(result.data.war&&result.data.war.length>0)
+          {
+            todayNews.push(result.data.war[0]);
+          }
+          if(result.data.ent&&result.data.ent.length>0)
+          {
+            todayNews.push(result.data.ent[0]);
+          }
+          if(result.data.toutiao&&result.data.toutiao.length>0)
+          {
+            todayNews.push(result.data.toutiao[0]);
+          }
+          if(todayNews.length>0){
+            this.setState({todayNews})
+          }
+        }
+      }
+    );
   }
   showModal = key => (e) => {
     e.preventDefault(); // 修复 Android 上点击穿透
@@ -60,15 +99,6 @@ class App extends Component {
     }
     switch(index){
       case 0:
-      // prompt(
-      //   '黄花鱼',
-      //   '注：50元/斤，约2两/条', 
-      //   [{ text: '取消' },
-      //   { text: '提交', 
-      //   onPress: value => console.log(`输入的内容:${value}`) 
-      //   },], 
-      //   'plain-text', 
-      //   '10斤');
         browserHistory.push('/fish');
         break;
       case 1:
@@ -84,6 +114,17 @@ class App extends Component {
         Toast.info("先抽根烟吧");
         break;
     }
+  }
+  buyFishModal(){
+      prompt(
+        '黄花鱼',
+        '注：50元/斤，约2两/条', 
+        [{ text: '取消' },
+        { text: '提交', 
+        onPress: value => console.log(`输入的内容:${value}`) 
+        },], 
+        'plain-text', 
+        '10斤');
   }
   loginClick(){
     prompt(
@@ -114,6 +155,7 @@ class App extends Component {
   }
   render() {
     const { getFieldProps } = this.props.form;
+    const {todayNews} = this.state;
     return (
       <div className="App">
         <div className="App-header">
@@ -176,9 +218,19 @@ class App extends Component {
             <Item
               thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
               arrow="horizontal"
-              onClick={() => {}}
+              onClick={this.buyFishModal}
             >9斤黄花鱼一条，惊爆价仅售100元！</Item>
-            <Item thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+            {
+              todayNews.map((item)=>{
+                return (
+                  <Item thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+                  arrow="horizontal"
+                  onClick={() => {window.location.href=item.link}}
+                >{item.title}</Item>      
+                )
+              })
+            }
+            {/* <Item thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
               arrow="horizontal"
             >郭台铭、任贤齐齐聚湄洲岛，万千群众贺妈祖游台湾</Item>
             <Item thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
@@ -189,7 +241,7 @@ class App extends Component {
             >售18.99-31.69万 2018款大众迈腾正式上市</Item>
             <Item thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
               arrow="horizontal"
-            >十二年两代更迭 国产丰田锐志正式停产</Item>
+            >十二年两代更迭 国产丰田锐志正式停产</Item> */}
           </List>
           {/*<button onClick={()=>this.cigaretteAlert()}>
             <img src={ welcSrc } />
