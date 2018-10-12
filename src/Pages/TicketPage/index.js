@@ -4,8 +4,8 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import './index.css';
 
 const tabs = [
-  { title: '轮渡' },
-  { title: '门票' },
+  { title: '轮渡时刻表' },
+  { title: '票价说明' },
   { title: '公交' },
   { title: '打车' }
 ];
