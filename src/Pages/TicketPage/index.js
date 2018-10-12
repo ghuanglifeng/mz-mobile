@@ -167,7 +167,8 @@ class TicketPage extends Component {
                       </table>
                     </Card.Body>
                   </Card>
-                  <Card style={{marginTop: 20}}>
+                  <div style={{height: 1,border: '1px dashed #ccc',width: window.screen.width, marginTop: 5, marginBottom: 5}}></div>
+                  <Card>
                     <Card.Header
                       title={<span style={{fontSize: 14}}>一、客船航班</span>}
                       //thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
