@@ -1,0 +1,23 @@
+.tr{
+  border: 1px solid #000;
+}
+.td{
+  width: 42.5px;
+  border-left: 1px solid #ccc;
+  background-color: #FFFFCC;
+}
+.td1{
+  width: 42.5px;
+  background-color: #FFFFCC;
+}
+.tdTop{
+  width: 42.5px;
+  border-top: 1px solid #ccc;
+  background-color: #FDE9D9;
+}
+.tdLeftTop{
+  width: 42.5px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background-color: #FDE9D9;
+}

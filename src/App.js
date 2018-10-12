@@ -25,8 +25,8 @@ const srcData=[{
   icon: 'image/shell.gif',
   text: '纪念品'
 },{
-  icon: 'image/games.jpg',
-  text: '工具娱乐'
+  icon: 'image/ticket.png',
+  text: '购票'
 }];
 let todayNews=[];
 class App extends Component {
@@ -108,7 +108,7 @@ class App extends Component {
         browserHistory.push('/souvenir')
         break;
       case 3:
-        browserHistory.push('/games');
+        browserHistory.push('/ticket');
         break;
       default:
         Toast.info("先抽根烟吧");

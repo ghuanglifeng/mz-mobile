@@ -8,6 +8,7 @@ import Home from './Pages/HomePage/index';
 import HappyToolPage from './Pages/HappyToolPage/index';
 import SouvenirPage from './Pages/SouvenirPage/index';
 import FishPage from './Pages/FishPage/index';
+import TicketPage from './Pages/TicketPage/index';
 import "./config.js";
 
 const loginCheck = ()=> {
@@ -25,6 +26,7 @@ ReactDOM.render((
         <Route path="/souvenir" component={SouvenirPage} onEnter={loginCheck}/>
         <Route path="/games" component={HappyToolPage} onEnter={loginCheck}/>
         <Route path="/fish" component={FishPage} onEnter={loginCheck}/>
+        <Route path="/ticket" component={TicketPage} onEnter={loginCheck}/>
     </Router>
 ), document.getElementById('root'));
 registerServiceWorker();
