@@ -200,7 +200,7 @@ class TicketPage extends Component {
                       </table>
                     </Card.Body>
                   </Card>
-                  <Card style={{marginTop: 10}}>
+                  <Card>
                     <Card.Header
                       title={<span style={{fontSize: 14}}>二、快艇航班</span>}
                       //thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
