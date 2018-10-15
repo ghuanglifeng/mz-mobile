@@ -45,6 +45,7 @@ class App extends Component {
       (result)=>{
         if(result&&result.data)
         {
+          todayNews=[];
           if(result.data.tech&&result.data.tech.length>0)
           {
             todayNews.push(result.data.tech[0]);

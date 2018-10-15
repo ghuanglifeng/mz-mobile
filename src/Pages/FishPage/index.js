@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { WingBlank, SegmentedControl, NoticeBar, WhiteSpace, Carousel } from 'antd-mobile';
+import ReactPlayer from 'react-player';
+//import "react-responsive-carousel/lib/styles/carousel.min.css";
+//import { Carousel } from 'react-responsive-carousel';
 import "./index.css";
 
 let pageData;
@@ -69,9 +72,10 @@ class Fish extends Component {
         <WhiteSpace size="lg" />
         <Carousel
           autoplay={false}
-          infinite
-          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-          afterChange={index => console.log('slide to', index)}
+          animation={true}
+          //infinite
+          //beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          //afterChange={index => console.log('slide to', index)}
         >
           {pageData&&pageData.data?pageData.data.map(val => (
             <a
@@ -90,20 +94,34 @@ class Fish extends Component {
                 }}
               />
               :
-                <video 
-                controls 
-                muted 
-                webkit-playsinline="true" 
-                playsinline="true" 
-                //poster="" 
-                src={val.src}
-                style={{ width: '100%', height: imgHeight, verticalAlign: 'top', minHeight: 512 }}
-                onLoad={() => {
-                  window.dispatchEvent(new Event('resize'));
-                }}
-                >
-                  您的浏览器不支持该视频播放
-                </video>
+              <div className='player-wrapper'>
+                <ReactPlayer
+                  playing
+                  loop
+                  className='react-player'
+                  url={val.src}
+                  width='100%'
+                  height={imgHeight}
+                  onReady={() => {
+                    window.dispatchEvent(new Event('resize'));
+                  }}
+                />
+              </div>
+                // <ReactPlayer url={val.src} playing />
+                // <video 
+                // controls 
+                // muted 
+                // webkit-playsinline="true" 
+                // playsinline="true" 
+                // //poster="" 
+                // src={val.src}
+                // style={{ width: '100%', height: imgHeight, verticalAlign: 'top', minHeight: 512 }}
+                // onLoad={() => {
+                //   window.dispatchEvent(new Event('resize'));
+                // }}
+                // >
+                //   您的浏览器不支持该视频播放
+                // </video>
               }
             </a>
           ))

@@ -9,6 +9,7 @@ import HappyToolPage from './Pages/HappyToolPage/index';
 import SouvenirPage from './Pages/SouvenirPage/index';
 import FishPage from './Pages/FishPage/index';
 import TicketPage from './Pages/TicketPage/index';
+import MZMap from './Pages/TicketPage/mzMap';
 import "./config.js";
 
 const loginCheck = ()=> {
@@ -27,6 +28,7 @@ ReactDOM.render((
         <Route path="/games" component={HappyToolPage} onEnter={loginCheck}/>
         <Route path="/fish" component={FishPage} onEnter={loginCheck}/>
         <Route path="/ticket" component={TicketPage} onEnter={loginCheck}/>
+        <Route path="/mzmap" component={MZMap} onEnter={loginCheck}/>
     </Router>
 ), document.getElementById('root'));
 registerServiceWorker();
