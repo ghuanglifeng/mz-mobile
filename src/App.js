@@ -161,6 +161,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <p className="LoginArea">
+            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=99&py=putian" width="160" height="36"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
             <span style={{display: this.state.LoginStatus==='1'?'none':'block'}}>
                 <a href="javascript:void(0);" onClick={()=>this.loginClick()}>登录</a>
                 {/* &nbsp;<span style={{ color: '#000' }}>|</span> &nbsp;

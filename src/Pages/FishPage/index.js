@@ -96,7 +96,8 @@ class Fish extends Component {
               :
               <div className='player-wrapper'>
                 <ReactPlayer
-                  playing
+                  playing={false}
+                  controls={true}
                   loop
                   className='react-player'
                   url={val.src}
