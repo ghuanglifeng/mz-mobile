@@ -83,7 +83,7 @@ class TicketPage extends Component {
                 <BusTicket />
               </div>
               <div style={{ display: 'flex', backgroundColor: '#fff' }}>
-                <iframe src='/mzmap' style={{width: screenWidth, height: screenHeight}} />
+                <iframe src='/mzmap' style={{width: screenWidth, height: screenHeight, border: 0}} />
               </div>
             </Tabs>
           </StickyContainer>

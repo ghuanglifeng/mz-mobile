@@ -160,19 +160,21 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <p className="LoginArea">
-            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=99&py=putian" width="160" height="36"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
-            <span style={{display: this.state.LoginStatus==='1'?'none':'block'}}>
-                <a href="javascript:void(0);" onClick={()=>this.loginClick()}>登录</a>
-                {/* &nbsp;<span style={{ color: '#000' }}>|</span> &nbsp;
-                <a href="javascript:void(0);" onClick={this.showModal('regModal')}>注册</a> */}
-            </span>
-            <span style={{display: this.state.LoginStatus==='0'?'none':'block'}}>
-              hi,{sessionStorage.getItem('username')}
-              &nbsp;
-              <a href="javascript:void(0);" onClick={()=>this.loginOut()}>退出</a>
-            </span>
-          </p>
+          <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            <iframe name="weather_inc" src="http://i.tianqi.com/index.php?c=code&id=99&py=putian" width="160" height="36" style={{border: 0, marginTop: -10}}  frameborder="no" border="0" scrolling="no" allowtransparency="yes"></iframe>
+            <div className="LoginArea">
+              <span style={{display: this.state.LoginStatus==='1'?'none':'block'}}>
+                  <a href="javascript:void(0);" onClick={()=>this.loginClick()}>登录</a>
+                  {/* &nbsp;<span style={{ color: '#000' }}>|</span> &nbsp;
+                  <a href="javascript:void(0);" onClick={this.showModal('regModal')}>注册</a> */}
+              </span>
+              <span style={{display: this.state.LoginStatus==='0'?'none':'block'}}>
+                hi,{sessionStorage.getItem('username')}
+                &nbsp;
+                <a href="javascript:void(0);" onClick={()=>this.loginOut()}>退出</a>
+              </span>
+            </div>
+          </div>
           <Modal
           visible={this.state.regModal}
           transparent
