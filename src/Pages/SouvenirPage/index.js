@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { List, InputItem, WhiteSpace, Button } from 'antd-mobile';
+import { Carousel, WingBlank } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import "./index.css";
 
@@ -7,42 +7,57 @@ class SouvenirPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      data: ['1', '2', '3'],
+      imgHeight: 176,
     }
   }
-  handleClick = () => {
-    console.log(1);
+  componentDidMount() {
+    // simulate img loading
+    setTimeout(() => {
+      this.setState({
+        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
+      });
+    }, 100);
   }
   render() {
-    const { getFieldProps } = this.props.form;
     return (
-      <div>
-        <List renderHeader={() => '订单'}>
-          <InputItem
-            {...getFieldProps('bankCard', {
-              initialValue: '8888 8888 8888 8888',
-            }) }
-          >商品编号</InputItem>
-          <InputItem
-            {...getFieldProps('phone') }
-            type="phone"
-            placeholder="186 1234 1234"
-          >手机号码</InputItem>
-          <InputItem
-            {...getFieldProps('password') }
-            type="password"
-            placeholder="****"
-          >密码</InputItem>
-          <InputItem
-            {...getFieldProps('number') }
-            type="number"
-            placeholder="click to show number keyboard"
-          >数字键盘</InputItem>
-        </List>
-        <Button onClick={this.handleClick}>提交</Button>
-      </div>
+      <WingBlank>
+        <Carousel className="space-carousel"
+          frameOverflow="visible"
+          cellSpacing={10}
+          slideWidth={0.8}
+          autoplay
+          infinite
+          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+          afterChange={index => this.setState({ slideIndex: index })}
+        >
+          {this.state.data.map((val, index) => (
+            <a
+              key={val}
+              href="http://www.alipay.com"
+              style={{
+                display: 'block',
+                position: 'relative',
+                top: this.state.slideIndex === index ? -10 : 0,
+                height: this.state.imgHeight,
+                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              <img
+                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  // fire window resize event to change height
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
+          ))}
+        </Carousel>
+      </WingBlank>
     );
   }
 }
-const FormedSouvenirPage = createForm()(SouvenirPage);
-export default FormedSouvenirPage;
+export default SouvenirPage;
