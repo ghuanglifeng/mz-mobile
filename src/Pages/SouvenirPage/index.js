@@ -31,30 +31,111 @@ class SouvenirPage extends Component {
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => this.setState({ slideIndex: index })}
         >
-          {this.state.data.map((val, index) => (
-            <a
-              key={val}
-              href="http://www.alipay.com"
+          <a
+              key={0}
+              href="#"
               style={{
                 display: 'block',
                 position: 'relative',
-                top: this.state.slideIndex === index ? -10 : 0,
+                top: this.state.slideIndex === 0 ? -10 : 0,
                 height: this.state.imgHeight,
                 boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
               }}
             >
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                src="./souvenirData/201810230001.jpg"
                 alt=""
                 style={{ width: '100%', verticalAlign: 'top' }}
                 onLoad={() => {
-                  // fire window resize event to change height
                   window.dispatchEvent(new Event('resize'));
                   this.setState({ imgHeight: 'auto' });
                 }}
               />
             </a>
-          ))}
+            <a
+              key={1}
+              href="#"
+              style={{
+                display: 'block',
+                position: 'relative',
+                top: this.state.slideIndex === 1 ? -10 : 0,
+                height: this.state.imgHeight,
+                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              <img
+                src="./souvenirData/201810230002.jpg"
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
+            <a
+              key={2}
+              href="#"
+              style={{
+                display: 'block',
+                position: 'relative',
+                top: this.state.slideIndex === 2 ? -10 : 0,
+                height: this.state.imgHeight,
+                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              <img
+                src="./souvenirData/201810230003.jpg"
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
+            <a
+              key={3}
+              href="#"
+              style={{
+                display: 'block',
+                position: 'relative',
+                top: this.state.slideIndex === 3 ? -10 : 0,
+                height: this.state.imgHeight,
+                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              <img
+                src="./souvenirData/201810230004.jpg"
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
+            <a
+              key={4}
+              href="#"
+              style={{
+                display: 'block',
+                position: 'relative',
+                top: this.state.slideIndex === 4 ? -10 : 0,
+                height: this.state.imgHeight,
+                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+              }}
+            >
+              <img
+                src="./souvenirData/201810230005.jpg"
+                alt=""
+                style={{ width: '100%', verticalAlign: 'top' }}
+                onLoad={() => {
+                  window.dispatchEvent(new Event('resize'));
+                  this.setState({ imgHeight: 'auto' });
+                }}
+              />
+            </a>
         </Carousel>
       </WingBlank>
     );

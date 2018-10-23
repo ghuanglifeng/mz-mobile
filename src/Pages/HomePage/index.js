@@ -151,13 +151,13 @@ class Home extends Component {
             />
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-            跟团
+            待开发
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-            自助
+            待开发
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '150px', backgroundColor: '#fff' }}>
-            目的地参团
+            待开发
           </div>
         </Tabs>
       </div>
