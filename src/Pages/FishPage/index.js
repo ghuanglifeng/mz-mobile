@@ -6,7 +6,110 @@ import ReactPlayer from 'react-player';
 import "./index.css";
 
 let pageData;
-
+const tmpData=[
+  {
+    "completed": true,
+    "order": 0,
+    "title": "string",
+    "date": "2018-09-28",
+    "data": [
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143023.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143101.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143110.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143116.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143124.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-28/20180928143131.jpg",
+        "price": 0,
+        "desc": ""
+      }
+    ],
+    "noticeContent": "野生大青龙虾，术后修复神鱼狗鲨，野生大对虾，包肥包甜虾菇，船说网红鲟仔，因为天气原因，没有船只出去，鱼品种比较少，放筐活鲜还有图片这些！"
+  },
+  {
+    "completed": true,
+    "order": 0,
+    "title": "string",
+    "date": "2018-09-29",
+    "data": [
+      {
+        "name": "",
+        "type": "video",
+        "src": "/fishData/2018-09-29/259023ec34ab8ee9a5436adf0c979f4f.mp4",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-29/20180930094926.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-29/20180930095030.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "img",
+        "src": "/fishData/2018-09-29/20180930095040.jpg",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "video",
+        "src": "/fishData/2018-09-29/a2394a7925c203754773037a1a08403d.mp4",
+        "price": 0,
+        "desc": ""
+      },
+      {
+        "name": "",
+        "type": "video",
+        "src": "/fishData/2018-09-29/c420fb4b72399fafb8c68f2472f16997.mp4",
+        "price": 0,
+        "desc": ""
+      }
+    ],
+    "noticeContent": "渔船出去定时网捕捞，差不多两个小时就会回来，这是最新鲜的捕捞法，这样捕回来的鱼都是活的，运输途中才会慢慢晕倒的"
+  }
+]
 class Fish extends Component {
   constructor(props) {
     super(props);
@@ -26,26 +129,28 @@ class Fish extends Component {
       (result)=>{
         if(result&&result.length>0)
         {
-          const item=result.filter((e)=>{
+          let item=result.filter((e)=>{
             if(e.date===new Date().toLocaleDateString().replace(/\//g,'-'))
             {
               return e;
             }
           })[0];
-          const item1=result.filter((e)=>{
+          let item1=result.filter((e)=>{
             if(e.date===new Date(new Date().getTime()-24*60*60*1000).toLocaleDateString().replace(/\//g,'-'))
             {
               return e;
             }
           })[0];
-          if(item)
+          if(!item)
           {
-            fishData.push({"date":item.date,"data":item.data,"noticeContent":item.noticeContent})
+            item=tmpData[0];
           }
-          if(item1)
+          fishData.push({"date":item.date,"data":item.data,"noticeContent":item.noticeContent})
+          if(!item1)
           {
-            fishData.push({"date":item1.date,"data":item1.data,"noticeContent":item1.noticeContent})
+            item1=tmpData[1];
           }
+          fishData.push({"date":item1.date,"data":item1.data,"noticeContent":item1.noticeContent})
           if(fishData.length>0)
           {
             this.setState({fishData})
