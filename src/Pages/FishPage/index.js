@@ -130,13 +130,13 @@ class Fish extends Component {
         if(result&&result.length>0)
         {
           let item=result.filter((e)=>{
-            if(e.date===new Date().toLocaleDateString().replace(/\//g,'-'))
+            if(new Date(e.date).toLocaleDateString()===new Date().toLocaleDateString())
             {
               return e;
             }
           })[0];
           let item1=result.filter((e)=>{
-            if(e.date===new Date(new Date().getTime()-24*60*60*1000).toLocaleDateString().replace(/\//g,'-'))
+            if(new Date(e.date).toLocaleDateString()===new Date(new Date().getTime()-24*60*60*1000).toLocaleDateString())
             {
               return e;
             }
