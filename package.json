@@ -33,10 +33,13 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "aphrodite": "^2.2.3",
     "babel-plugin-import": "^1.2.0",
     "rc-form": "^1.4.8",
     "react-app-rewired": "^1.2.9",
     "react-m-carousel": "^2.0.3",
+    "react-magic": "^0.2.3",
+    "react-magic-effects": "^0.1.0",
     "react-player": "^1.6.6",
     "react-sticky": "^6.0.3",
     "react-weather": "^0.1.3",
