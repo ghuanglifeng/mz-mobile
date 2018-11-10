@@ -35,7 +35,7 @@
   "devDependencies": {
     "aphrodite": "^2.2.3",
     "babel-plugin-import": "^1.2.0",
-    "rc-form": "^1.4.8",
+    "rc-form": "^1.5.0",
     "react-app-rewired": "^1.2.9",
     "react-m-carousel": "^2.0.3",
     "react-magic": "^0.2.3",

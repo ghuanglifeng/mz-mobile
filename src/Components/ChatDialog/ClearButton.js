@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'antd-mobile';
  
 class ClearButton extends React.Component {
     constructor( props, context ) {
@@ -10,9 +11,9 @@ class ClearButton extends React.Component {
         this.props.clearMessages();
     }
     render() {
-        let button = <button onClick={this.handleClearMessages} >Clear</button>;
+        let button = <Button type='default' onClick={this.handleClearMessages} >清空</Button>;
         if ( this.props.isDisabled ) {
-            button = <button disabled="disabled">Clear</button>;
+            button = <Button type='default' disabled="disabled">清空</Button>;
         }
         return <div>{button}</div>;
     }        

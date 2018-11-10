@@ -1,30 +1,43 @@
 import React from 'react';
- 
+import { List, InputItem,TextareaItem, WhiteSpace, Button } from 'antd-mobile';
+import { createForm } from 'rc-form';
+
 class PostMessageForm extends React.Component {
-    constructor( props, context ) {
-        super( props, context );
- 
-        this.handleSubmit = this.handleSubmit.bind( this );
+    constructor(props, context) {
+        super(props, context);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit( event ) {
+    handleSubmit(event) {
         event.preventDefault();
-        this.props.appendChatMessage( this.nameInput.value, this.messageInput.value );
-        this.nameInput.value = '';
-        this.messageInput.value = '';    
-    }   
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                this.props.appendChatMessage('admin', values.msgcontent);
+                this.props.form.resetFields();
+            }
+        });
+    }
     render() {
+        let errors;
+        const { getFieldProps, getFieldError } = this.props.form;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" 
-                       ref={name => this.nameInput = name}
-                       placeholder="Name" />
-                <input type="text" 
-                       ref={message => this.messageInput = message}
-                       placeholder="Message" />
-                <input type="submit" value="Send" />
-            </form>
+            <List>
+                <div>
+                    <TextareaItem
+                        {...getFieldProps('msgcontent', {
+                            initialValue: '',
+                            rules: [{required: true}],
+                        })}
+                        rows={5}
+                        count={100}
+                        clear
+                        placeholder='请输入消息内容...'
+                    />
+                    <Button style={{ marginTop: 20, marginBottom: 5 }} type="primary" onClick={this.handleSubmit}>发送</Button>
+                </div>
+            </List>
         );
     }
 }
- 
-export default PostMessageForm;
+
+export default createForm()(PostMessageForm);

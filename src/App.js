@@ -180,11 +180,12 @@ class App extends Component {
             </div>
           </div>
           <Modal
+            style={{width: '90%'}}
             visible={this.state.chatModal}
             transparent
             maskClosable={false}
             onClose={this.onClose('chatModal')}
-            title="聊天"
+            title="ai湄洲机器人"
             footer={[{ text: '关闭', onPress: () => { console.log('cancel'); this.onClose('chatModal')(); } } ]}
           >
               <ChatDialog />  

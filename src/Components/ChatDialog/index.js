@@ -20,7 +20,27 @@ class ChatBox extends React.Component {
             owner: owner,
             text: text
         }; 
-        this.setState({ messages: [ ...this.state.messages, newMessage ] });
+        const tulingApi=window.API_CONFIG.TULING_API+text;
+        fetch(tulingApi, {
+            method: 'GET'
+          }).then(res => res.json()).then(
+            (result) => {
+                if(result.code===100000)
+                {
+                    let robotMessage = {
+                        id: result.text.length + 1,
+                        timestamp: new Date().getTime(),
+                        owner: 'ai湄洲',
+                        text: result.text
+                    };
+                    this.setState({ messages: [ ...this.state.messages, newMessage ] });   
+                    setTimeout(()=>{
+                        this.setState({ messages: [ ...this.state.messages, newMessage, robotMessage ] });   
+                    },800)       
+                }else{
+                    this.setState({ messages: [ ...this.state.messages, newMessage ] });
+                }
+            })
     }    
     clearMessages() {
         this.setState( { messages: [] } );

@@ -3,7 +3,7 @@ import React from 'react';
 class Message extends React.Component {
     render() {
         let now = new Date( this.props.timestamp );
-        let hhmmss = now.toISOString().substr(11, 8); 
+        let hhmmss = now.toLocaleTimeString(); 
         return (
             <div className="message">
                 <span className="message-time">{hhmmss}</span> 
