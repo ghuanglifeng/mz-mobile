@@ -160,7 +160,7 @@ class App extends Component {
     const { todayNews } = this.state;
     return (
       <div className="App">
-        <div className={css(styles.tin)} style={{width: 50,position: 'fixed', top: 0, right: 0, bottom: 0,marginLeft: 'auto', marginRight: '20', marginTop: 100}}>
+        <div className="chatWin" style={{width: 50,position: 'fixed', top: 0, right: 0, bottom: 0,marginLeft: 'auto', marginRight: '20', marginTop: 100}}>
           <img onClick={this.showModal('chatModal')} src='image/chat.png' style={{width: 50,height: 50}}/>
         </div>
         <div className="App-header">

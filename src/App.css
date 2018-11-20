@@ -35,3 +35,65 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.chatWin{
+	animation: scaleDraw 5s ease-in-out infinite;
+	-webkit-animation: scaleDraw 5s ease-in-out infinite;
+	-moz-animation: scaleDraw 5s ease-in-out infinite;
+	-o-animation: scaleDraw 5s ease-in-out infinite;
+}
+@keyframes scaleDraw{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(1.1);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.1);
+	}
+}
+@-webkit-keyframes scaleDraw{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(1.1);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.1);
+	}
+}
+@-moz-keyframes scaleDraw{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(1.1);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.1);
+	}
+}
+@-o-keyframes scaleDraw{
+	0%{
+		transform: scale(1);
+	}
+	25%{
+		transform: scale(1.1);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(1.1);
+	}
+}
